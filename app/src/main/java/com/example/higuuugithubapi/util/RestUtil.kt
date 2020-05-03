@@ -8,22 +8,21 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RestUtil {
     val ENDPOINT = "https://api.github.com/"
-    val retrofit: Retrofit
-
-    init {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val httpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-        val builder = Retrofit.Builder()
-            .baseUrl(ENDPOINT)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(httpClient)
-
-        retrofit = builder.build()
-    }
+//    val retrofit: Retrofit
+//    init {
+//        val interceptor = HttpLoggingInterceptor()
+//        interceptor.level = HttpLoggingInterceptor.Level.BODY
+//
+//        val httpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+//
+//        val builder = Retrofit.Builder()
+//            .baseUrl(ENDPOINT)
+//            .addConverterFactory(MoshiConverterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .client(httpClient)
+//
+//        retrofit = builder.build()
+//    }
 
 
 }

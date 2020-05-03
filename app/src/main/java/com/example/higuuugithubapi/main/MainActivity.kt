@@ -1,32 +1,32 @@
-package com.example.higuuugithubapi
+package com.example.higuuugithubapi.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.higuuugithubapi.data.UserRepoRequest
+import com.example.higuuugithubapi.R
 import com.example.higuuugithubapi.databinding.ActivityMainBinding
 import com.example.higuuugithubapi.util.MainViewModelFactory
-import com.example.higuuugithubapi.util.RepositoryFactory
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    @Inject
+    lateinit var mainViewModelFactory: MainViewModelFactory
+    private val mainViewModel: MainViewModel by viewModels { mainViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        val factory = MainViewModelFactory(RepositoryFactory.createClientApiRepository())
-
-        mainViewModel = ViewModelProvider(
-            this,
-            factory
-        ).get(MainViewModel::class.java)
+            DataBindingUtil.setContentView<ActivityMainBinding>(
+                this,
+                R.layout.activity_main
+            )
 
         mainViewModel.getUser("higuuu")
 
