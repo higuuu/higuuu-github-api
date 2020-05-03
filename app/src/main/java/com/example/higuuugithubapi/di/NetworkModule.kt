@@ -2,6 +2,7 @@ package com.example.higuuugithubapi.di
 
 import com.example.higuuugithubapi.api.ClientApi
 import com.example.higuuugithubapi.util.RestUtil
+import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,6 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
+@Module
 class NetworkModule {
     @Singleton
     @Provides
