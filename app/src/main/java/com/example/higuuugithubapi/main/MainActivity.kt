@@ -2,32 +2,31 @@ package com.example.higuuugithubapi.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.higuuugithubapi.R
 import com.example.higuuugithubapi.databinding.ActivityMainBinding
 import com.example.higuuugithubapi.util.MainViewModelFactory
-import com.example.higuuugithubapi.util.RepositoryFactory
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    @Inject
+    lateinit var mainViewModelFactory: MainViewModelFactory
+    private val mainViewModel: MainViewModel by viewModels { mainViewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         val binding =
-            DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            DataBindingUtil.setContentView<ActivityMainBinding>(
+                this,
                 R.layout.activity_main
             )
-
-        val factory = MainViewModelFactory(RepositoryFactory.createClientApiRepository())
-
-        mainViewModel = ViewModelProvider(
-            this,
-            factory
-        ).get(MainViewModel::class.java)
 
         mainViewModel.getUser("higuuu")
 

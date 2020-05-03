@@ -34,7 +34,7 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(RestUtil.ENDPOINT)
+            .baseUrl(ENDPOINT)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
@@ -45,5 +45,9 @@ class NetworkModule {
     @Provides
     fun provideClientApi(retrofit: Retrofit): ClientApi {
         return retrofit.create(ClientApi::class.java)
+    }
+
+    companion object {
+        val ENDPOINT = "https://api.github.com/"
     }
 }

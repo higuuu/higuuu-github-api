@@ -11,8 +11,9 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
-class ClientApiRepository constructor(val clientApi: ClientApi){
+class ClientApiRepository @Inject constructor(val clientApi: ClientApi){
 
     fun getUser(userRepoRequest:String): Single<List<UserRepoResponse>> {
         return clientApi.getUserRepos(userRepoRequest)
