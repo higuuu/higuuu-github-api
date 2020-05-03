@@ -1,6 +1,5 @@
 package com.example.higuuugithubapi.api
 
-import com.example.higuuugithubapi.data.UserRepoRequest
 import com.example.higuuugithubapi.data.UserRepoResponse
 import io.reactivex.Single
 import retrofit2.Response

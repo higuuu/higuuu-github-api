@@ -1,7 +1,6 @@
 package com.example.higuuugithubapi.di
 
 import com.example.higuuugithubapi.api.ClientApi
-import com.example.higuuugithubapi.util.RestUtil
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
