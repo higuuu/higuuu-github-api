@@ -17,10 +17,9 @@ import javax.inject.Singleton
     ]
 )
 
-
 interface ApplicationComponent : AndroidInjector<App> {
     @Component.Factory
-    interface Factory{
+    interface Factory {
         fun create(appModule: AppModule): ApplicationComponent
     }
 }

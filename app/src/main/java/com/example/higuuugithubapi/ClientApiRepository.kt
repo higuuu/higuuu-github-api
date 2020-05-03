@@ -8,9 +8,9 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 import javax.inject.Inject
 
-class ClientApiRepository @Inject constructor(val clientApi: ClientApi){
+class ClientApiRepository @Inject constructor(val clientApi: ClientApi) {
 
-    fun getUser(userRepoRequest:String): Single<List<UserRepoResponse>> {
+    fun getUser(userRepoRequest: String): Single<List<UserRepoResponse>> {
         return clientApi.getUserRepos(userRepoRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
