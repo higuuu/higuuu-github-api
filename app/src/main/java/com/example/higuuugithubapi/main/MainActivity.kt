@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var mainViewModelFactory: MainViewModelFactory
     private val mainViewModel: MainViewModel by viewModels { mainViewModelFactory }
 
+    fun sendUser(userName: String) {
+        mainViewModel.getUser(userName)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -28,7 +32,9 @@ class MainActivity : AppCompatActivity() {
                 R.layout.activity_main
             )
 
-        mainViewModel.getUser("higuuu")
+        binding.send.setOnClickListener {
+            sendUser(binding.userName.text.toString())
+        }
 
         mainViewModel.userRepos.observe(this, Observer {
             binding.mainText.text = it.toString()
