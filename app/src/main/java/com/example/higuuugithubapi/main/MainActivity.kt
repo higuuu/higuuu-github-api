@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
             val groupAdapter = GroupAdapter<ViewHolder>()
             binding.recyclerView.adapter = groupAdapter
 
-            val layoutManager = LinearLayoutManager(this)
-            binding.recyclerView.setLayoutManager(layoutManager)
+//            val layoutManager = LinearLayoutManager(this)
+//            binding.recyclerView.setLayoutManager(layoutManager)
 
             items.forEach { item ->
                 groupAdapter.add(ItemList(item))
