@@ -13,8 +13,11 @@ class MainViewModel @Inject constructor(val clientApiRepository: ClientApiReposi
 
     fun getUser(userRepoRequest: String) {
         clientApiRepository.getUser(userRepoRequest)
-            .subscribe { response: List<UserRepoResponse>? ->
+            .subscribe ({ response: List<UserRepoResponse>? ->
                 _userRepos.postValue(response)
-            }
+            },{
+                val errorResponse = UserRepoResponse("そのユーザーは存在しません")
+                _userRepos.postValue(listOf(errorResponse))
+            })
     }
 }
